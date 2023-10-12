@@ -1,0 +1,20 @@
+
+‰
+java:S1488?"gImmediately return this expression instead of assigning it to the temporary variable "visitedLocation".(¿½ÂÙúÿÿÿÿ8Ú±¢°1
+v	java:S115z"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ïšä8ò±¢°1
+`
+java:S1155?">Use isEmpty() to check whether the collection is empty or not.(¿½ÂÙúÿÿÿÿ8ú±¢°1
+t
+java:S6204I"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ß’°øùÿÿÿÿ8û±¢°1
+W
+java:S1161o":Add the "@Override" annotation above this method signature(“–ış8…²¢°1
+d
+java:S3457‰"AFormat specifiers should be used instead of string concatenation.(É°™˜øÿÿÿÿ8Š²¢°1
+J
+java:S1602",Remove useless curly braces around statement(ßê™è8‹²¢°1
+<
+java:S2119–"Save and re-use this "Random".(éÖÃì8²¢°1
+<
+java:S2119œ"Save and re-use this "Random".(éÖÃì8²¢°1
+A
+java:S2119 "Save and re-use this "Random".(—íø–şÿÿÿÿ8²¢°1

@@ -1,0 +1,7 @@
+
+–
+java:S1319B"{The return type of this method should be an interface such as "List" rather than the implementation "CopyOnWriteArrayList".(Œ†v8üÁ£°1
+
+java:S1319["{The return type of this method should be an interface such as "List" rather than the implementation "CopyOnWriteArrayList".(—¦Íœÿÿÿÿÿ8üÁ£°1
+s
+java:S2159K"VRemove this call to "equals"; comparisons between unrelated types always return false.(¾“š†8ˆÂ£°1

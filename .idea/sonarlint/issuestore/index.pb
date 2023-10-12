@@ -1,0 +1,23 @@
+
+9
+	readme.md,2\7\275d783e298228506068436512433d343feb52aa
+t
+Dsrc/test/java/com/openclassrooms/tourguide/TestTourGuideService.java,a\a\aa1f3325474f5a34676ab69ded4abdb12cf88d99
+t
+Dsrc/main/java/com/openclassrooms/tourguide/TourguideApplication.java,7\f\7f051969a79b71e071fa985ecfca95c89cddeb88
+o
+?src/main/java/com/openclassrooms/tourguide/TourGuideModule.java,5\5\5589bd65409024fdb3b31b40082b0e3789a6ee72
+s
+Csrc/main/java/com/openclassrooms/tourguide/TourGuideController.java,b\3\b37c21d4bc76001a6df9b7f862813dc57e17eb6f
+i
+9src/main/java/com/openclassrooms/tourguide/user/User.java,3\a\3a9cbf333d44b945ad976c51106044fff9afd638
+y
+Isrc/main/java/com/openclassrooms/tourguide/helper/InternalTestHelper.java,6\6\664364f5c088ba6e069efc72dffb35f3045a427e
+r
+Bsrc/test/java/com/openclassrooms/tourguide/TestRewardsService.java,f\a\fa11caa21752c63e386a4f004ea30d7ed8d1c5bc
+x
+Hsrc/main/java/com/openclassrooms/tourguide/service/TourGuideService.java,a\f\af8266dafdcf1dcc9e2a24bfa8ca2d95a40a1379
+v
+Fsrc/main/java/com/openclassrooms/tourguide/service/RewardsService.java,3\d\3d79ffe95b633c6afc5877a68aa0077e89f4685e
+o
+?src/test/java/com/openclassrooms/tourguide/TestPerformance.java,5\a\5a3517607ae631821ac9dbac2facef895ab1ef6e

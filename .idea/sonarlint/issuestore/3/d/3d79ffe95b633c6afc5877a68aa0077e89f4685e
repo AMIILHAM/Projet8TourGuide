@@ -1,0 +1,9 @@
+
+†
+java:S1488h"dImmediately return this expression instead of assigning it to the temporary variable "statuteMiles".(‰ƒ´ºùÿÿÿÿ8ÚÅ¢‘°1
+o
+java:S6204E"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8şÅ¢‘°1
+o
+java:S6204I"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8ÿÅ¢‘°1
+J
+java:S1125S"(Remove the unnecessary boolean literals.(³í“ùÿÿÿÿ8Æ¢‘°1

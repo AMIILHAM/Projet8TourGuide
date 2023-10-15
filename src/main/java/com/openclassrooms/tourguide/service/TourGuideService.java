@@ -30,7 +30,7 @@ public class TourGuideService {
 	private Logger logger = LoggerFactory.getLogger(TourGuideService.class);
 	private final GpsUtil gpsUtil;
 	private final RewardsService rewardsService;
-	private ExecutorService executorService = Executors.newFixedThreadPool(88);
+	private ExecutorService executorService = Executors.newFixedThreadPool(200);
 	private final TripPricer tripPricer = new TripPricer();
 	public final Tracker tracker;
 	boolean testMode = true;

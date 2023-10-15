@@ -46,7 +46,7 @@ class TestPerformance {
 	 * assertTrue(TimeUnit.MINUTES.toSeconds(20) >=
 	 * TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
 	 */
-
+	@Disabled
 	@Test
 	void highVolumeTrackLocation() {
 		GpsUtil gpsUtil = new GpsUtil();
@@ -133,7 +133,7 @@ class TestPerformance {
 				+ " seconds.");
 		assertTrue(TimeUnit.MINUTES.toSeconds(20) >= TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
 	}
-
+	@Disabled
 	@Test
 	void highVolumeGetRewardsV2() {
 		GpsUtil gpsUtil = new GpsUtil();

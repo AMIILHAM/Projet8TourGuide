@@ -74,5 +74,11 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<distributionManagement>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>a0poi9drxc6jg-artifactory-primary-0-snapshots</name>
+			<url>https://tourguide.jfrog.io/artifactory/libs-snapshot</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

@@ -1,0 +1,27 @@
+name: Maven Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@2
+      with:
+        java-version: 17
+
+    - name: Build and Test
+      run: mvn clean install
+
+    - name: Deploy to Artifactory
+      run: mvn deploy --settings C:\Users\Utilisateur\.m2\settings.xml
+      env:
+        MAVEN_CLI_OPTS: "-Dmaven.repo.local=$HOME/.m2/repository"

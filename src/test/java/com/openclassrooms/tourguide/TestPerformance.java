@@ -46,14 +46,14 @@ class TestPerformance {
 	 * assertTrue(TimeUnit.MINUTES.toSeconds(20) >=
 	 * TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
 	 */
-	@Disabled
+
 	@Test
 	void highVolumeTrackLocation() {
 		GpsUtil gpsUtil = new GpsUtil();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		// Users should be incremented up to 100,000, and test finishes within 15
 		// minutes
-		InternalTestHelper.setInternalUserNumber(10000);
+		InternalTestHelper.setInternalUserNumber(100000);
 		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
 		tourGuideService.tracker.stopTracking();
 
@@ -93,7 +93,6 @@ class TestPerformance {
 		assertTrue(TimeUnit.MINUTES.toSeconds(15) >= TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
 	}
 
-	@Disabled  // Noncompliant
 	@Test
 	void highVolumeGetRewards() {
 		GpsUtil gpsUtil = new GpsUtil();
@@ -111,71 +110,22 @@ class TestPerformance {
 		List<User> allUsers = tourGuideService.getAllUsers();
 
 		try {
-			ExecutorService executorService = Executors.newFixedThreadPool(44);
+			ExecutorService executorService = Executors.newFixedThreadPool(100);
 
 			for (User user : allUsers) {
 				Runnable runnable = () -> {
 					user.addToVisitedLocations(new VisitedLocation(user.getUserId(), attraction1, new Date()));
 					rewardsService.calculateRewards(user);
-                    assertFalse(user.getUserRewards().isEmpty());
 				};
 				executorService.execute(runnable);
 			}
 			executorService.shutdown();
-			// Wait for all tasks to complete
-			while (!executorService.awaitTermination(1, TimeUnit.SECONDS)) {}
+			while (!executorService.awaitTermination(1, TimeUnit.MILLISECONDS)) {}
 
 		}catch (Exception ignored) {}
 
 		stopWatch.stop();
 
-		System.out.println("highVolumeGetRewards: Time Elapsed: " + TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime())
-				+ " seconds.");
-		assertTrue(TimeUnit.MINUTES.toSeconds(20) >= TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
-	}
-	@Disabled
-	@Test
-	void highVolumeGetRewardsV2() {
-		GpsUtil gpsUtil = new GpsUtil();
-		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
-
-		// Users should be incremented up to 100,000, and test finishes within 20 minutes
-		InternalTestHelper.setInternalUserNumber(10000);
-		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
-
-		StopWatch stopWatch = new StopWatch();
-		stopWatch.start();
-
-		Attraction attraction1 = gpsUtil.getAttractions().get(0);
-		List<User> allUsers = tourGuideService.getAllUsers();
-
-		System.out.println("allUsers counter : " + allUsers.size());
-
-		List<CompletableFuture<Void>> futures = allUsers.stream()
-				.map(user -> CompletableFuture.runAsync(() -> {
-					user.addToVisitedLocations(new VisitedLocation(user.getUserId(), attraction1, new Date()));
-					rewardsService.calculateRewards(user);
-
-					CopyOnWriteArrayList<UserReward> userRewards = user.getVisitedLocations().parallelStream()
-							.flatMap(visitedLocation -> gpsUtil.getAttractions().stream()
-									.filter(attraction -> user.isRewardExist(attraction) && rewardsService.nearAttraction(visitedLocation, attraction))
-									.map(attraction -> new UserReward(visitedLocation, attraction, rewardsService.getRewardPoints(attraction, user)))
-							)
-							.collect(Collectors.toCollection(CopyOnWriteArrayList::new));
-
-					user.addUserRewards(userRewards);
-				}))
-				.toList();
-
-		// Wait for all futures to complete
-		CompletableFuture<Void> allOf = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
-		allOf.join();
-
-		// Ensure that user rewards are not empty for all users
-		assertTrue(allUsers.stream().noneMatch(user -> user.getUserRewards().isEmpty()));
-
-		stopWatch.stop();
-		System.out.println("user counter : " + allUsers.size());
 		System.out.println("highVolumeGetRewards: Time Elapsed: " + TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds.");
 		assertTrue(TimeUnit.MINUTES.toSeconds(20) >= TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
 	}

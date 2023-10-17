@@ -55,7 +55,7 @@ class TestRewardsService {
 		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
 
 		User user = tourGuideService.getAllUsers().get(0);
-		rewardsService.calculateRewards(user);
+		rewardsService.calculateRewardsV1(user);
 
 		List<UserReward> userRewards = tourGuideService.getUserRewards(user);
 		tourGuideService.tracker.stopTracking();

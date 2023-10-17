@@ -30,7 +30,7 @@ public class TourGuideService {
 	private Logger logger = LoggerFactory.getLogger(TourGuideService.class);
 	private final GpsUtil gpsUtil;
 	private final RewardsService rewardsService;
-	private ExecutorService executorService = Executors.newFixedThreadPool(200);
+	private ExecutorService executorService = Executors.newFixedThreadPool(1000);
 	private final TripPricer tripPricer = new TripPricer();
 	public final Tracker tracker;
 	boolean testMode = true;
@@ -87,7 +87,7 @@ public class TourGuideService {
 	public VisitedLocation trackUserLocation(User user) {
 		VisitedLocation visitedLocation = gpsUtil.getUserLocation(user.getUserId());
 		user.addToVisitedLocations(visitedLocation);
-		rewardsService.calculateRewards(user);
+		rewardsService.calculateRewardsV1(user);
 		return visitedLocation;
 	}
 

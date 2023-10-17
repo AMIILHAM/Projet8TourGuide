@@ -2,6 +2,11 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="libs-snapshot" />
+      <option name="url" value="https://tourguide.jfrog.io/artifactory/libs-snapshot" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
@@ -10,6 +15,11 @@
       <option name="id" value="nexus" />
       <option name="name" value="nexus" />
       <option name="url" value="http://nexus.devops.os/repository/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="libs-release" />
+      <option name="url" value="https://tourguide.jfrog.io/artifactory/libs-release" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />

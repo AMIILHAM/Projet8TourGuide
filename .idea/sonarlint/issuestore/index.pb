@@ -21,3 +21,7 @@ v
 Fsrc/main/java/com/openclassrooms/tourguide/service/RewardsService.java,3\d\3d79ffe95b633c6afc5877a68aa0077e89f4685e
 o
 ?src/test/java/com/openclassrooms/tourguide/TestPerformance.java,5\a\5a3517607ae631821ac9dbac2facef895ab1ef6e
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+}
+Msrc/main/java/com/openclassrooms/tourguide/user/UserNearbyAttractionsDto.java,2\f\2fd3002717607f907e065126fd8fef155fcc9810

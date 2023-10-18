@@ -33,11 +33,6 @@ public class TourGuideController {
     	return tourGuideService.getUserLocation(getUser(userName));
     }
 
-/*    @RequestMapping("/getNearbyAttractions")
-    public List<Attraction> getNearbyAttractions(@RequestParam String userName) {
-    	VisitedLocation visitedLocation = tourGuideService.getUserLocation(getUser(userName));
-    	return tourGuideService.getNearByAttractions(visitedLocation);
-    }*/
 
     @RequestMapping("/getNearbyAttractions")
     public List<UserNearbyAttractionsDto> getNearbyAttractions(@RequestParam String userName) {

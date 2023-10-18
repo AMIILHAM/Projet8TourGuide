@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 17
-          distribution: 'temurin'
+          distribution: 'corretto'
           
       - name: Copy Maven settings.xml
         run: cp .github/settings.xml $HOME/.m2/settings.xml
@@ -34,7 +34,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 17
-          distribution: 'temurin'
+          distribution: 'corretto'
           
       - name: Copy Maven settings.xml
         run: cp .github/settings.xml $HOME/.m2/settings.xml
@@ -52,7 +52,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 17
-          distribution: 'temurin'
+          distribution: 'corretto'
           
       - name: Copy Maven settings.xml
         run: cp .github/settings.xml $HOME/.m2/settings.xml

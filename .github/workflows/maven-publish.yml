@@ -1,4 +1,4 @@
-name: Generate and Visualize Data Distribution
+name: Maven Build, Test, and Deploy
 
 on:
   push:
@@ -8,25 +8,42 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Check Out Code
         uses: actions/checkout@v2
 
-      - name: Set up JDK
+      - name: Set up Maven
         uses: actions/setup-java@v2
         with:
           java-version: 17
-          distribution: 'temurin'
 
-      - name: Build and Test
-        run: mvn clean install
+      - name: Build
+        run: mvn -s .m2/settings.xml --batch-mode compile
 
-      - name: Generate Random Data
-        run: python generate_data.py
-        env:
-          MAVEN_CLI_OPTS: "-Dmaven.repo.local=$HOME/.m2/repository"
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Code
+        uses: actions/checkout@v2
 
-      - name: Visualize Data Distribution
-        run: python visualize_distribution.py
+      - name: Set up Maven
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
 
+      - name: Test
+        run: mvn -s .m2/settings.xml --batch-mode test
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Code
+        uses: actions/checkout@v2
+
+      - name: Set up Maven
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+
+      - name: Deploy
+        run: mvn -s .m2/settings.xml --batch-mode deploy

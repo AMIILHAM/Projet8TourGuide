@@ -19,7 +19,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build
-        run: mvn -s .m2/settings.xml --batch-mode compile
+        run: mvn -s C:\Users\Utilisateur\.m2\settings.xml --batch-mode compile
 
   test:
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Test
-        run: mvn -s .m2/settings.xml --batch-mode test
+        run: mvn test --settings C:\Users\Utilisateur\.m2\settings.xml
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,4 +49,4 @@ jobs:
           distribution: 'temurin'
 
       - name: Deploy
-        run: mvn -s .m2/settings.xml --batch-mode deploy
+        run: mvn deploy --settings C:\Users\Utilisateur\.m2\settings.xml

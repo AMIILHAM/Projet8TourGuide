@@ -65,6 +65,11 @@ public class TourGuideService {
 		return internalUserMap.get(userName);
 	}
 
+	/**
+	 * Get All users
+	 *
+	 * @return a list of all user
+	 */
 	public List<User> getAllUsers() {
 		return internalUserMap.values().stream().collect(Collectors.toList());
 	}
@@ -83,14 +88,18 @@ public class TourGuideService {
 		user.setTripDeals(providers);
 		return providers;
 	}
-
+	/**
+	 * Track  users' current location
+	 */
 	public VisitedLocation trackUserLocation(User user) {
 		VisitedLocation visitedLocation = gpsUtil.getUserLocation(user.getUserId());
 		user.addToVisitedLocations(visitedLocation);
 		rewardsService.calculateRewardsV1(user);
 		return visitedLocation;
 	}
-
+	/**
+	 * Get nearby Location of user
+	 */
 	public List<Attraction> getNearByAttractions(VisitedLocation visitedLocation) {
 		List<Attraction> nearbyAttractions = new ArrayList<>();
 		for (Attraction attraction : gpsUtil.getAttractions()) {
@@ -101,7 +110,12 @@ public class TourGuideService {
 
 		return nearbyAttractions;
 	}
-
+	/**
+	 * Get 5 nearby attractions of user
+	 * @param user user
+	 *
+	 * @return a list  of userNearAttractionsDto
+	 */
 	public List<UserNearbyAttractionsDto> userNearbyAttractionsDtoList(User user){
 		VisitedLocation visitedLocation = this.getUserLocation(user);
 		List<UserNearbyAttractionsDto> result = new ArrayList<>();

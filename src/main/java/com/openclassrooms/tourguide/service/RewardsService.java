@@ -42,6 +42,11 @@ public class RewardsService {
 		proximityBuffer = defaultProximityBuffer;
 	}
 
+	/**
+	 * Calculates  rewards to a user based on their visited locations and attractions
+	 *
+	 * @param user - user
+	 */
 	public void calculateRewards(User user) {
 		List<Attraction> attractions = gpsUtil.getAttractions();
 		List<VisitedLocation> visitedLocationList = user.getVisitedLocations().stream().toList();
@@ -63,6 +68,13 @@ public class RewardsService {
 		}
 	}
 
+	/**
+	 * assign rewards to a user based on their visited locations and attractions
+	 *
+	 * @param user - user
+	 * @param userReward - UserReward
+	 * @param attraction -  attractions
+	 */
 	private void submitRewardPoints(UserReward userReward, Attraction attraction, User user) {
 		CompletableFuture.supplyAsync(() -> rewardsCentral.getAttractionRewardPoints(attraction.attractionId, user.getUserId()), executorService)
 				.thenAccept(points -> {
@@ -70,11 +82,23 @@ public class RewardsService {
 					user.addUserReward(userReward);
 				});
 	}
-	
+	/**
+	 * Check if a provided Location is within range of an Attraction
+	 *
+	 * @param attraction attraction to be checked
+	 * @param location   location to be compared to
+	 * @return true if location is within range, otherwise false
+	 */
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
 		return (getDistance(attraction, location) > attractionProximityRange);
 	}
-
+	/**
+	 * Check if a given attraction is near a visited location
+	 *
+	 * @param visitedLocation - visite
+	 * @param attraction - attraction
+	 * @return True if the attraction is near the visited location
+	 */
 	public boolean nearAttraction(VisitedLocation visitedLocation, Attraction attraction) {
 		return getDistance(attraction, visitedLocation.location) <= proximityBuffer;
 	}
@@ -104,7 +128,7 @@ public class RewardsService {
 		});
 		allFutures.join();
 	}
-
+	//Get reward point value of an attraction for a provided UUID
 	public int getRewardPoints(Attraction attraction, User user) {
 		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId, user.getUserId());
 	}

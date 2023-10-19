@@ -24,7 +24,7 @@ https://github.com/AMIILHAM/Projet8TourGuide.git
 
  # Application Usage:
 1. Run application
-2 .Available endpoints :
+2. Available endpoints :
 - Get - Index http://localhost:8080/
 - Get user location http://localhost:8080/getLocation (OBLIGATORY parameter: userName)
 - Get nearby attractions (defined as 5 at the moment) http://localhost:8080/getNearbyAttractions (OBLIGATORY parameter: userName)
